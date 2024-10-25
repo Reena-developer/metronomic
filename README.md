@@ -10,7 +10,7 @@
 1. **Clone the Repository:**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Reena-developer/metronomic.git
    cd metronomic
    ```
 
@@ -22,11 +22,6 @@
 
 3. **Set Up Environment Variables:**
 
-   Copy the `.env.example` file to `.env` and configure it:
-
-   ```bash
-   cp .env.example .env
-   ```
 
 4. **Generate Application Key:**
 

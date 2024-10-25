@@ -1,0 +1,86 @@
+# Laravel folders
+/vendor
+/node_modules
+/public/hot
+/public/storage
+/public/build
+/storage/*.key
+/storage/*.log
+/storage/pail
+/storage/debugbar
+/storage/app/public
+/storage/framework/cache/data
+/storage/framework/sessions
+/storage/framework/testing
+/storage/framework/views
+
+# Compiled directories and files
+/bootstrap/cache/*
+!bootstrap/cache/.gitignore
+
+# Environment files
+.env
+.env.backup
+.env.production
+.env.testing
+.env.*.backup
+
+# PHPUnit results
+.phpunit.result.cache
+/.phpunit.cache
+
+# IDE or editor-specific files
+/.vscode
+/.idea
+/.phpactor.json
+
+# OS generated files
+Thumbs.db
+.DS_Store
+
+# Composer and NPM package manager files
+composer.lock
+yarn.lock
+npm-debug.log
+yarn-error.log
+pids
+logs
+
+# Debug and log files
+*.log
+*.pid
+*.seed
+*.coveralls.yml
+
+# Temporary files
+*.swp
+*.swo
+*~
+
+# GitHub token and Composer auth files
+auth.json
+
+# Cache and backup files
+*.bak
+*.tmp
+*.backup
+
+# PHPUnit and coverage
+coverage/
+
+# Homestead and Fleet
+Homestead.json
+Homestead.yaml
+/.fleet
+
+# PHPStorm
+.idea/
+
+# MacOS
+.DS_Store
+
+# Windows thumbnail cache files
+Thumbs.db
+
+# Zed configuration (if applicable)
+.zed

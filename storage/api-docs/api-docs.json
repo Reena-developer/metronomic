@@ -1,0 +1,190 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Patient Meal Planning API",
+        "version": "0.1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/metronomic/public",
+            "description": "Local server"
+        }
+    ],
+    "paths": {
+        "/api/v1/meal-plan/list": {
+            "post": {
+                "tags": [
+                    "mealPlanning"
+                ],
+                "summary": "Get meal planning records by date range",
+                "operationId": "fa65a7e52104286e09cd30b11f9577b9",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "start_date",
+                                    "end_date"
+                                ],
+                                "properties": {
+                                    "start_date": {
+                                        "description": "Start date for meal planning records.",
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2024-01-01"
+                                    },
+                                    "end_date": {
+                                        "description": "End date for meal planning records.",
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2024-01-31"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "Indicates if the request was successful.",
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "description": "Response message.",
+                                            "type": "string",
+                                            "example": "Report generated successfully."
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "month": {
+                                                        "description": "The month of the report.",
+                                                        "type": "string",
+                                                        "example": "July 2024"
+                                                    },
+                                                    "patient_id": {
+                                                        "description": "The ID of the patient.",
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "planned_percentage": {
+                                                        "description": "Percentage of planned meals.",
+                                                        "type": "string",
+                                                        "example": "12.9 %"
+                                                    },
+                                                    "avg_total_calories": {
+                                                        "description": "Average total calories consumed.",
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 1875.57
+                                                    },
+                                                    "avg_total_carbs": {
+                                                        "description": "Average total carbohydrates consumed.",
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 280.56
+                                                    },
+                                                    "avg_total_protein": {
+                                                        "description": "Average total proteins consumed.",
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 151.01
+                                                    },
+                                                    "avg_total_fat": {
+                                                        "description": "Average total fats consumed.",
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 89.89
+                                                    },
+                                                    "days_planning_skipped": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "description": "List of days where meal planning was skipped.",
+                                                            "type": "string",
+                                                            "example": "01 July 2024"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "Indicates that the request was not successful.",
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "description": "Error message.",
+                                            "type": "string",
+                                            "example": "Validation errors occurred."
+                                        },
+                                        "errors": {
+                                            "description": "Detailed validation errors.",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "Indicates that the request was not successful.",
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "description": "Error message.",
+                                            "type": "string",
+                                            "example": "An error occurred while generating the report."
+                                        },
+                                        "error": {
+                                            "description": "Detailed error message (optional).",
+                                            "type": "string",
+                                            "example": "Internal Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "mealPlanning",
+            "description": "mealPlanning"
+        }
+    ]
+}
